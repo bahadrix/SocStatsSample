@@ -73,6 +73,6 @@ echo "Debug Args    	: $debugArg"
 echo "--------------------------------------------"
 # java -Xms1024m -Xmx1024m -XX:ReservedCodeCacheSize=128m -XX:MaxMetaspaceSize=256m -jar /usr/share/sbt-launcher-packaging/bin/sbt-launch.jar
 
-java -Xms$m -Xmx$M -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled  -XX:MetaspaceSize=64m -XX:MaxMetaspaceSize=256m $debugArg -jar /usr/share/sbt-launcher-packaging/bin/sbt-launch.jar "$cmd"; do
+java -Xms$m -Xmx$M -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled  -XX:MetaspaceSize=64m -XX:MaxMetaspaceSize=256m $debugArg -jar /usr/share/sbt-launcher-packaging/bin/sbt-launch.jar "$cmd"
 
 
