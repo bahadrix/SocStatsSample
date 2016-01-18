@@ -9,8 +9,6 @@ object Global {
 
   val heap = ManagementFactory.getMemoryMXBean().getHeapMemoryUsage().getMax()
   val sparkMode = sys.env.getOrElse("SPARK_MODE", "local[2]")
-  val tmpDir = sys.env.getOrElse("SPARK_TMP_DIR", "/disk2/sparktmp")
-  val rpmDir = sys.env.getOrElse("RPM_DIR", "/disk2/rpm")
   val rpmCacheSize = sys.env.getOrElse("RPM_CACHE_SIZE", "200000").toInt
   val executorMemory:Int = (heap * 0.7).toInt
 
@@ -20,7 +18,6 @@ object Global {
     .set("spark.io.compression.codec","org.apache.spark.io.LZ4CompressionCodec") //default olan serverda hata veriyor
     .set("spark.driver.allowMultipleContexts","true")
     .set("spark.task.maxFailures","40")
-    .set("spark.local.dir", tmpDir)
     .set("spark.executor.memory", executorMemory.toString + "b")
     .set("spark.driver.memory",   executorMemory.toString + "b")
 
@@ -28,5 +25,6 @@ object Global {
 
   val sparkContext = new SparkContext(sparkConf)
 
+  sparkContext.setLogLevel("WARN")
 
 }
