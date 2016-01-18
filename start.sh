@@ -8,7 +8,7 @@ M=20G
 m=20G
 
 d=0
-cmd="~run"
+cmd="run"
 
 if [[ $# -eq 0 ]] ; then
     echo "Usage: load.sh [OPTS]"

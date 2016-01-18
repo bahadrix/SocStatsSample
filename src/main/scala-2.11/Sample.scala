@@ -13,8 +13,11 @@ object Sample extends App{
 
   val res = getTeamScores()
 
-
   Global.sparkContext.stop()
+
+  Thread.sleep(1000)
+
+  println()
 
   res.foreach(println)
 
