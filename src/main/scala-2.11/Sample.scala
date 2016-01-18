@@ -11,9 +11,15 @@ object Sample extends App{
 
   //getTeams()
 
-  getTeamScores()
+  val res = getTeamScores()
 
-  def getTeamScores(): Unit = {
+
+  Global.sparkContext.stop()
+
+  res.foreach(println)
+
+
+  def getTeamScores(): Array[String] = {
 
     val scores =rows
       .map(row => {
@@ -31,14 +37,16 @@ object Sample extends App{
 
     Global.sparkContext.parallelize(scores)
       .reduceByKey(_+_)
-      .foreach(r => println(s"${r._1}\t:${r._2} goals"))
+      .map(r => s"${r._1}\t:${r._2} goals")
+      .collect()
+
 
 
 
 
   }
 
-  def getTeams(): Unit = {
+  def getTeams(): Array[String] = {
 
     val teams = rows
       .map(row => {
@@ -49,7 +57,7 @@ object Sample extends App{
 
     Global.sparkContext.parallelize(teams)
       .distinct()
-      .foreach(println)
+      .collect();
 
 
   }
