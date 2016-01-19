@@ -66,7 +66,6 @@ fi
 export SPARK_MODE="local[$THREADS]"
 echo "Spark mode    	: $SPARK_MODE"
 echo "Memory        	: $m - $M"
-echo "RPM Cache Size	: $rpmCacheSize"
 echo "Activator home	: $acthome"
 echo "Activator cmd 	: $cmd"
 echo "Debug Args    	: $debugArg"
